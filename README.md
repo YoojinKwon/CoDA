@@ -86,7 +86,6 @@ Supported `--tta_method` values: `coda`, `tent`, `tent_coda`, `sar`, `sar_coda`,
 ## TODO
 
 - [ ] Fix TENT+CoDA / SAR+CoDA integration (currently broken)
-- [ ] Obtain/share genuine LFC-QAT (r0r8) checkpoints for CIFAR10 ResNet26 4-bit/8-bit
 
 ## License
 
