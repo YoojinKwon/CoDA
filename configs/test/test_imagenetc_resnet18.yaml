@@ -1,0 +1,27 @@
+# NOTE: set to null for passing None value
+
+# Project settings
+project_name: 'imagenetc_resnet18'
+random_seed: 1234
+
+# Dataset settings
+dataset: 'imagenetc'
+input_size: 224
+batch_size: 32
+num_workers: 2
+
+# Model settings
+model_arch: 'resnet18'
+q_scheme: 'fp'
+q_bits_a: 32
+q_bits_w: 32
+
+# Checkpoint path
+ckpt_path: '../FCRAQ/checkpoint/imagenet_resnet18_fp/resnet18_fp_r0r56_e90.pt'
+
+# TTA method
+tta_method: 'coda'
+train_dataset: 'imagenet'
+
+# CoDA-specific settings
+freq: 56

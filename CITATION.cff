@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the paper below. Note: as of
+  this writing the paper is conditionally accepted at ACM SenSys 2027 and
+  not yet camera-ready; title/authors/DOI below will be finalized then."
+title: "CoDA: [FULL PAPER TITLE HERE]"
+authors:
+  - family-names: "Kwon"
+    given-names: "Yoojin"
+    affiliation: "Seoul National University"
+preferred-citation:
+  type: conference-paper
+  title: "CoDA: [FULL PAPER TITLE HERE]"
+  authors:
+    - family-names: "Kwon"
+      given-names: "Yoojin"
+      affiliation: "Seoul National University"
+  year: 2027
+  conference:
+    name: "ACM International Conference on Embedded Networked Sensor Systems (SenSys)"
+  status: "conditionally-accepted"
+  # doi: "[to be added at camera-ready]"
+  # url: "[arxiv or DOI link, to be added at camera-ready]"

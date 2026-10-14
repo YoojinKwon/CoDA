@@ -1,0 +1,44 @@
+# NOTE: set to null for passing None value
+
+# Defaults
+project_name: 'cifar10_efficientnetb0_lsq'
+save_path: './checkpoint/cifar10_efficientnetb0_lsq'
+random_seed: 1234
+
+# Models
+model_arch: 'efficientnet_b0'
+q_scheme: 'lsq' # null for fp
+q_bits_w: 2
+q_bits_a: 2
+
+# Dataset
+dataset: 'cifar10'
+dataset_path: '/ssd/datasets/CIFAR10/'
+batch_size: 128
+num_workers: 2
+input_size: 224
+prefetch_factor: 2
+
+# Training
+epochs: 200
+last_epoch: 0
+update_freq: 1
+val_freq: 1
+optim: "adam"
+kwargs_optim:
+  lr: 0.001
+lrsch: 'step'
+kwargs_lrsch:
+  step_size: 1
+  gamma: 0.98
+
+# Frequency Filtering
+freq: 0
+use_fft: false
+
+# Checkpoints
+pretrained: false
+checkpoint_path: null
+
+# Logging
+use_wandb: false

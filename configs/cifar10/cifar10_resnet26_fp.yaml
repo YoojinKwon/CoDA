@@ -1,0 +1,45 @@
+# NOTE: set to null for passing None value
+
+# Defaults
+project_name: 'cifar10_resnet26_fp'
+save_path: './checkpoint/cifar10_resnet26_fp'
+random_seed: 1234
+
+# Models
+model_arch: 'resnet26'
+q_scheme: null # null for fp
+q_bits_w: null
+q_bits_a: null
+
+# Dataset
+dataset: 'cifar10'
+dataset_path: '/ssd/datasets/CIFAR10/'
+batch_size: 256 
+num_workers: 2
+input_size: 32
+
+# Training
+epochs: 90
+last_epoch: 0
+update_freq: 1
+val_freq: 1
+optim: "sgd"
+kwargs_optim:
+  lr: 0.1
+  momentum: 0.9
+  weight_decay: 1.0e-4
+lrsch: 'step'
+kwargs_lrsch:
+  'step_size': 30
+  'gamma': 0.1
+
+# Frequency Filtering
+freq: 0
+use_fft: false
+
+# Checkpoints
+pretrained: false
+checkpoint_path: null
+
+# Logging
+use_wandb: false

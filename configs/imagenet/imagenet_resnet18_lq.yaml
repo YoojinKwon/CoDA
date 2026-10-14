@@ -1,0 +1,44 @@
+# NOTE: set to null for passing None value
+
+# Defaults
+project_name: 'imagenet_resnet18_lq'
+save_path: './checkpoint/imagenet_resnet18_lq'
+random_seed: 1234
+
+# Models
+model_arch: 'resnet18'
+q_scheme: 'lq' # null for fp
+q_bits_w: 2
+q_bits_a: 2
+
+# Dataset
+dataset: 'imagenet'
+dataset_path: '/ssd/datasets/ILSVRC12'
+batch_size: 256 
+num_workers: 2
+input_size: 224
+
+# Training
+epochs: 120
+last_epoch: 0
+update_freq: 1
+val_freq: 1
+optim: "sgd"
+kwargs_optim:
+  lr: 0.1
+  momentum: 0.9
+  weight_decay: 1.0e-4
+lrsch: 'multi_step'
+kwargs_lrsch:
+  'milestones': [10, 30, 60, 80, 95, 105]
+
+# Frequency Filtering
+freq: 0
+use_fft: false
+
+# Checkpoints
+pretrained: false
+checkpoint_path: null
+
+# Logging
+use_wandb: false
