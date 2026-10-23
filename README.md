@@ -81,7 +81,7 @@ python coda/test_tta_per_corruption.py \
   --corr_type gaussian_noise
 ```
 
-Supported `--tta_method` values: `coda`, `tent`, `tent_coda`, `sar`, `sar_coda`, `norm`.
+Supported `--tta_method` values: `coda`, `tent`, `sar`, `norm`.
 
 
 ## License
