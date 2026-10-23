@@ -83,9 +83,6 @@ python coda/test_tta_per_corruption.py \
 
 Supported `--tta_method` values: `coda`, `tent`, `tent_coda`, `sar`, `sar_coda`, `norm`.
 
-## TODO
-
-- [ ] Fix TENT+CoDA / SAR+CoDA integration (currently broken)
 
 ## License
 
