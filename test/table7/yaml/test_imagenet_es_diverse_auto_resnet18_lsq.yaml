@@ -1,0 +1,31 @@
+# 코드 베이스 통일 필요
+# NOTE: set to null for passing None value
+#   CUDA_VISIBLE_DEVICES=0 python test_tta_save.py --random_seed 1234 --dataset imagenet_es_diverse_auto \
+#       --model_arch q_preact_resnet18 --q_scheme lsq --q_bits_a 8 --q_bits_w 8 \
+#       --ckpt_path ./checkpoint/resnet/resnet18_lsq_r0_r56_8bit_e90.pt --batch_size 4 --tta_method fabn --freq 56
+
+gpu_ids: "0" # "0,1,2,3" for all gpus
+project_name: 'imagenet_es_diverse_auto_resnet18_lsq'
+num_workers: 2
+dataset: 'imagenet_es_diverse_auto' # 'imagenet_es' # 'imagenet_es_auto' # 'imagenet_es_diverse'
+dataset_path: '/home/datasets/es-datasets'
+# kwargs_dataset: {'subset_json': 'subsets/diverse_2per_class_seed1234.json'} # ES_SUBSET_JSON in shell/run_tta_es_grid.sh
+input_size: 224
+batch_size: 4 # fixed in shell/run_tta_es_grid.sh (64 for the __bs64 subset runs)
+model_arch: 'q_preact_resnet18' # 'q_preact_resnet50'
+pretrained: False
+ckpt_path: './checkpoint/resnet/resnet18_lsq_r0_r56_8bit_e90.pt' # r0_r56 (LFC) for fabn, r0_r0 otherwise # '*_deepaug.pt' for DeepAugment-trained
+last_epoch: 0
+q_scheme: 'lsq' # 'lq' # 'fp' (q_bits 32) # null for fp
+q_bits_w: 8 # 2, 4, 8
+q_bits_a: 8 # 2, 4, 8
+epochs: 1
+tta_method: 'fabn' # 'noda' (no TTA) # 'norm' # 'tent' # 'sar' # 'tema'
+freq: 56 # LFC radius used by fabn; 0 for no frequency filtering
+hfc: 0
+bn_train: False
+residual: False
+train_dataset: 'imagenet' # used in bn_adapter
+validation: True
+weight_init: 'kaiming_normal' # 'kaiming_normal' # 'xavier_normal' # 'normal' for resent26
+random_seed: 1234

@@ -119,9 +119,7 @@ Checkpoints above):
 Each dispatcher calls a `run_combo.sh`-style script that loops
 `test_tta_per_corruption.py` over all 15 corruptions for one
 (model, q_scheme, bits) combo; logs land under that table's own
-`run_logs/`. Table 9 (ResNet18 continual TTA) is not included here — it
-uses a different entry point (`test_tta_continual.py`) from a separate,
-not-yet-public codebase.
+`run_logs/`.
 
 ## License
 

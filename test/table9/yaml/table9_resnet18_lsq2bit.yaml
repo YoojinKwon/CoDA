@@ -1,0 +1,22 @@
+# 코드 베이스 통일 필요
+# Table 9 (ResNet18 continual ImageNet-C TTA). Mirrors the actual CLI
+# invocation used against FCRAQ's test_tta_continual.py (not part of this
+# repo's coda/ codebase, and not loadable by coda/test_tta_per_corruption.py
+# as-is). Kept here for reference until the two codebases are unified.
+project_name: 'reproduce1008'
+random_seed: 1234
+
+dataset: 'imagenetc'
+input_size: 224
+batch_size: 64
+num_workers: 2
+
+model_arch: 'resnet18'
+q_scheme: 'lsq'
+q_bits_a: 2
+q_bits_w: 2
+
+ckpt_path: './checkpoint/imagenet_resnet18_lsq/resnet18_lsq_r0r56_2bit_e90.pt'
+
+tta_method: 'coda'
+freq: 56
