@@ -98,7 +98,7 @@ python coda/test_tta_per_corruption.py \
 (`configs/test/test_imagenetc_resnet18.yaml` is also still available as a
 minimal, standalone smoke-test config — see `examples/run_test_tta.sh`.)
 
-Supported `--tta_method` values: `coda`, `tent`, `tent_coda`, `sar`, `sar_coda`, `norm`.
+Supported `--tta_method` values: `coda`, `tent`, `sar`, `norm`.
 
 ## Reproducing paper tables
 
@@ -122,10 +122,6 @@ Each dispatcher calls a `run_combo.sh`-style script that loops
 `run_logs/`. Table 8 (ResNet18 continual TTA) is not included here — it
 uses a different entry point (`test_tta_continual.py`) from a separate,
 not-yet-public codebase.
-
-## TODO
-
-- [ ] Fix TENT+CoDA / SAR+CoDA integration (currently broken)
 
 ## License
 
