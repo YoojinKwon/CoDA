@@ -116,6 +116,7 @@ Checkpoints above):
 | 5 + 8 (CIFAR10-C, ResNet26/MobileNetV3/EfficientNet-b0) | `test/table5_table8/` | `bash test/table5_table8/run_all.sh [gpu]` then `run_table8_2bit.sh [gpu]` |
 | 5 LFC (ResNet26 4-bit/8-bit, genuine LFC-QAT) | `test/table5_lfc/` | `bash test/table5_lfc/run_lsq_lfc.sh [gpu]` / `run_lq_lfc.sh [gpu]` |
 | 7 (ImageNet-ES-Diverse) | `test/table7/` | - |
+| 9 (ResNet18 continual ImageNet-C TTA) | `test/table9/` | - |
 
 Each dispatcher calls a `run_combo.sh`-style script that loops
 `test_tta_per_corruption.py` over all 15 corruptions for one
