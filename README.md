@@ -33,6 +33,15 @@ configs/
 └── test/              # minimal smoke-test config
 
 examples/              # launcher shell scripts, one per entry point
+
+test/                  # the actual scripts/configs used to reproduce each
+                       # paper table's numbers (see "Reproducing paper
+                       # tables" below)
+├── table2/            # ImageNet-C, ResNet18/ResNet50
+├── table2_deepaug/     # ImageNet-C + DeepAug, ResNet18/ResNet50
+├── table4/            # ImageNet-C, ResNet50 (batch_size=4)
+├── table5_table7/      # CIFAR10-C, ResNet26 / MobileNetV3 / EfficientNet-b0
+└── table5_lfc/         # CIFAR10-C, ResNet26 4-bit/8-bit (genuine LFC-QAT)
 ```
 
 See `NOTICE.md` for third-party code this repository's model/TTA
@@ -55,8 +64,13 @@ huggingface-cli download ideastraw/coda-reproduction-checkpoints \
 
 Then point `ckpt_path` in the corresponding yaml at the downloaded file.
 
-Note: CIFAR10 ResNet26 4-bit/8-bit (LSQ and LQ) checkpoints are not
-included — see TODO below.
+Downloading the whole repo into `./checkpoint` (so that every `ckpt_path`
+in `test/*/yaml/*.yaml` resolves as-is) is also an option:
+
+```bash
+huggingface-cli download ideastraw/coda-reproduction-checkpoints \
+  --local-dir ./checkpoint
+```
 
 ## Usage
 
@@ -76,17 +90,42 @@ bash examples/run_train_ddp.sh configs/cifar10/cifar10_resnet26_fp.yaml
 
 ```bash
 python coda/test_tta_per_corruption.py \
-  --yaml configs/imagenet/imagenet_resnet50_lsq.yaml \
+  --yaml test/table2/yaml/table2_resnet50_lsq2bit.yaml \
   --tta_method coda \
   --corr_type gaussian_noise
 ```
 
+(`configs/test/test_imagenetc_resnet18.yaml` is also still available as a
+minimal, standalone smoke-test config — see `examples/run_test_tta.sh`.)
+
 Supported `--tta_method` values: `coda`, `tent`, `tent_coda`, `sar`, `sar_coda`, `norm`.
+
+## Reproducing paper tables
+
+`test/` holds the actual scripts and per-checkpoint configs used to
+reproduce each table's numbers (15 ImageNet-C / CIFAR10-C corruptions per
+combo, via `coda/test_tta_per_corruption.py`). Run from the repo root
+after downloading the matching checkpoints into `./checkpoint` (see
+Checkpoints above):
+
+| Table | Dir | Entry point |
+|---|---|---|
+| 2 (ImageNet-C, ResNet18/50) | `test/table2/` | `bash test/table2/launch_phase1.sh [num_gpus]` |
+| 2+A (DeepAug) | `test/table2_deepaug/` | `bash test/table2_deepaug/run_resnet18_deepaug.sh [gpu]` / `run_resnet50_deepaug.sh [gpu]` |
+| 4 (ResNet50, batch_size=4) | `test/table4/` | `bash test/table4/launch_table4.sh` |
+| 5 + 7 (CIFAR10-C, ResNet26/MobileNetV3/EfficientNet-b0) | `test/table5_table7/` | `bash test/table5_table7/run_all.sh [gpu]` then `run_table7_2bit.sh [gpu]` |
+| 5 LFC (ResNet26 4-bit/8-bit, genuine LFC-QAT) | `test/table5_lfc/` | `bash test/table5_lfc/run_lsq_lfc.sh [gpu]` / `run_lq_lfc.sh [gpu]` |
+
+Each dispatcher calls a `run_combo.sh`-style script that loops
+`test_tta_per_corruption.py` over all 15 corruptions for one
+(model, q_scheme, bits) combo; logs land under that table's own
+`run_logs/`. Table 8 (ResNet18 continual TTA) is not included here — it
+uses a different entry point (`test_tta_continual.py`) from a separate,
+not-yet-public codebase.
 
 ## TODO
 
 - [ ] Fix TENT+CoDA / SAR+CoDA integration (currently broken)
-- [ ] Obtain/share genuine LFC-QAT (r0r8) checkpoints for CIFAR10 ResNet26 4-bit/8-bit
 
 ## License
 

@@ -1,0 +1,13 @@
+project_name: 'table7_k64'
+random_seed: 1234
+dataset: 'cifar10c'
+input_size: 224
+batch_size: 64
+num_workers: 4
+model_arch: 'efficientnet_b0'
+q_scheme: 'lsq'
+q_bits_a: 2
+q_bits_w: 2
+ckpt_path: './checkpoint/cifar10_efficientnetb0_lsq/adam_lr0.01_step_resize224_freq56/e199.pt'
+tta_method: 'coda'
+train_dataset: 'cifar10'

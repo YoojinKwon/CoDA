@@ -1,0 +1,17 @@
+project_name: 'table5_lfc'
+random_seed: 1234
+
+dataset: 'cifar10c'
+input_size: 32
+batch_size: 64
+num_workers: 4
+
+model_arch: 'resnet26'
+q_scheme: 'lq'
+q_bits_a: 8
+q_bits_w: 8
+
+ckpt_path: './checkpoint/cifar10_resnet26_lq/cifar10_lq_8bit_lfc.pt'
+
+tta_method: 'coda'
+train_dataset: 'cifar10'

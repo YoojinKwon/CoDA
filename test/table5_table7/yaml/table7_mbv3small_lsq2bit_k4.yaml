@@ -1,0 +1,13 @@
+project_name: 'table7_k4'
+random_seed: 1234
+dataset: 'cifar10c'
+input_size: 224
+batch_size: 4
+num_workers: 4
+model_arch: 'mobilenetv3_small'
+q_scheme: 'lsq'
+q_bits_a: 2
+q_bits_w: 2
+ckpt_path: './checkpoint/cifar10_mobilenetv3small_lsq/adam_lr0.001_step_resize224_freq56/e149.pt'
+tta_method: 'coda'
+train_dataset: 'cifar10'

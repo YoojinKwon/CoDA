@@ -1,0 +1,18 @@
+# Table 5 reproduction (CIFAR10-C, ResNet26, k=64), new file, no existing files modified
+project_name: 'table5_k64'
+random_seed: 1234
+
+dataset: 'cifar10c'
+input_size: 32
+batch_size: 64
+num_workers: 4
+
+model_arch: 'resnet26'
+q_scheme: 'fp'
+q_bits_a: 32
+q_bits_w: 32
+
+ckpt_path: './checkpoint/cifar10_resnet26_fp/cifar10_fp_resnet26_r0r8.pt'
+
+tta_method: 'coda'
+train_dataset: 'cifar10'

@@ -1,0 +1,18 @@
+# Table 7 reproduction (CIFAR10-C lightweight models, LSQ, k=4), new file
+project_name: 'table7_k4'
+random_seed: 1234
+
+dataset: 'cifar10c'
+input_size: 224
+batch_size: 4
+num_workers: 4
+
+model_arch: 'mobilenetv3_small'
+q_scheme: 'lsq'
+q_bits_a: 4
+q_bits_w: 4
+
+ckpt_path: './checkpoint/cifar10_mobilenetv3small_lsq/cifar10_mobilenetv3small_lsq_4bit_r0r56.pt'
+
+tta_method: 'coda'
+train_dataset: 'cifar10'

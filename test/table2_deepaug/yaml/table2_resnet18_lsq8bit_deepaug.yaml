@@ -1,0 +1,17 @@
+project_name: 'table2_deepaug_real'
+random_seed: 1234
+
+dataset: 'imagenetc'
+input_size: 224
+batch_size: 64
+num_workers: 4
+
+model_arch: 'resnet18'
+q_scheme: 'lsq'
+q_bits_a: 8
+q_bits_w: 8
+
+ckpt_path: './checkpoint/deepaug/imagenet_resnet18_lsq/r0r56/8bit_checkpoint.pt'
+
+tta_method: 'coda'
+train_dataset: 'imagenet'

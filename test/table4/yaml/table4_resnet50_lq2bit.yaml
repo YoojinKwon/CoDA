@@ -1,0 +1,18 @@
+# Table 4 reproduction (ResNet50, k=4), copied from Table 2 yaml with batch_size 4
+project_name: 'table4_k4'
+random_seed: 1234
+
+dataset: 'imagenetc'
+input_size: 224
+batch_size: 4
+num_workers: 4
+
+model_arch: 'resnet50'
+q_scheme: 'lq'
+q_bits_a: 2
+q_bits_w: 2
+
+ckpt_path: './checkpoint/imagenet_resnet50_lq/resnet50_lq_r0r56_2bit_e120.pt'
+
+tta_method: 'coda'
+train_dataset: 'imagenet'

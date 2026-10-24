@@ -1,0 +1,18 @@
+# Phase 1 / Table 2 reproduction (auto-generated, new file, no existing files modified)
+project_name: 'reproduce1005'
+random_seed: 1234
+
+dataset: 'imagenetc'
+input_size: 224
+batch_size: 64
+num_workers: 4
+
+model_arch: 'resnet50'
+q_scheme: 'lq'
+q_bits_a: 8
+q_bits_w: 8
+
+ckpt_path: './checkpoint/imagenet_resnet50_lq/resnet50_lq_r0r56_8bit_e120.pt'
+
+tta_method: 'coda'
+train_dataset: 'imagenet'
