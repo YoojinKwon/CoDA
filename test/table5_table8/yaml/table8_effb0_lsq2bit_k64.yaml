@@ -1,4 +1,4 @@
-project_name: 'table7_k64'
+project_name: 'table8_k64'
 random_seed: 1234
 dataset: 'cifar10c'
 input_size: 224

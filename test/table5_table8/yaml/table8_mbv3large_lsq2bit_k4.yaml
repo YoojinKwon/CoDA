@@ -1,8 +1,8 @@
-project_name: 'table7_k64'
+project_name: 'table8_k4'
 random_seed: 1234
 dataset: 'cifar10c'
 input_size: 224
-batch_size: 64
+batch_size: 4
 num_workers: 4
 model_arch: 'mobilenetv3_large'
 q_scheme: 'lsq'

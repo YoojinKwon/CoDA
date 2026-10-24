@@ -40,7 +40,7 @@ test/                  # the actual scripts/configs used to reproduce each
 ├── table2/            # ImageNet-C, ResNet18/ResNet50
 ├── table2_deepaug/     # ImageNet-C + DeepAug, ResNet18/ResNet50
 ├── table4/            # ImageNet-C, ResNet50 (batch_size=4)
-├── table5_table7/      # CIFAR10-C, ResNet26 / MobileNetV3 / EfficientNet-b0
+├── table5_table8/      # CIFAR10-C, ResNet26 / MobileNetV3 / EfficientNet-b0
 └── table5_lfc/         # CIFAR10-C, ResNet26 4-bit/8-bit (genuine LFC-QAT)
 ```
 
@@ -113,13 +113,13 @@ Checkpoints above):
 | 2 (ImageNet-C, ResNet18/50) | `test/table2/` | `bash test/table2/launch_phase1.sh [num_gpus]` |
 | 2+A (DeepAug) | `test/table2_deepaug/` | `bash test/table2_deepaug/run_resnet18_deepaug.sh [gpu]` / `run_resnet50_deepaug.sh [gpu]` |
 | 4 (ResNet50, batch_size=4) | `test/table4/` | `bash test/table4/launch_table4.sh` |
-| 5 + 7 (CIFAR10-C, ResNet26/MobileNetV3/EfficientNet-b0) | `test/table5_table7/` | `bash test/table5_table7/run_all.sh [gpu]` then `run_table7_2bit.sh [gpu]` |
+| 5 + 8 (CIFAR10-C, ResNet26/MobileNetV3/EfficientNet-b0) | `test/table5_table8/` | `bash test/table5_table8/run_all.sh [gpu]` then `run_table8_2bit.sh [gpu]` |
 | 5 LFC (ResNet26 4-bit/8-bit, genuine LFC-QAT) | `test/table5_lfc/` | `bash test/table5_lfc/run_lsq_lfc.sh [gpu]` / `run_lq_lfc.sh [gpu]` |
 
 Each dispatcher calls a `run_combo.sh`-style script that loops
 `test_tta_per_corruption.py` over all 15 corruptions for one
 (model, q_scheme, bits) combo; logs land under that table's own
-`run_logs/`. Table 8 (ResNet18 continual TTA) is not included here — it
+`run_logs/`. Table 9 (ResNet18 continual TTA) is not included here — it
 uses a different entry point (`test_tta_continual.py`) from a separate,
 not-yet-public codebase.
 

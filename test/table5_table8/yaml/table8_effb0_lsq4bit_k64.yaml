@@ -1,10 +1,10 @@
-# Table 7 reproduction (CIFAR10-C lightweight models, LSQ, k=4), new file
-project_name: 'table7_k4'
+# Table 8 reproduction (CIFAR10-C lightweight models, LSQ, k=64), new file
+project_name: 'table8_k64'
 random_seed: 1234
 
 dataset: 'cifar10c'
 input_size: 224
-batch_size: 4
+batch_size: 64
 num_workers: 4
 
 model_arch: 'efficientnet_b0'

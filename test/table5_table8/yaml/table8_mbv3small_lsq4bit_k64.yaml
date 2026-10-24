@@ -1,5 +1,5 @@
-# Table 7 reproduction (CIFAR10-C lightweight models, LSQ, k=64), new file
-project_name: 'table7_k64'
+# Table 8 reproduction (CIFAR10-C lightweight models, LSQ, k=64), new file
+project_name: 'table8_k64'
 random_seed: 1234
 
 dataset: 'cifar10c'

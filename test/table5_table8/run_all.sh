@@ -1,17 +1,24 @@
 #!/bin/bash
-# Table 7, 2-bit combos (MobileNetV3-small/large, EfficientNet-b0, k=4/k=64).
-# Usage: run_table7_2bit.sh [gpu_id]
+# Table 5 (ResNet26 fp/lsq2bit/lq2bit) + Table 8 (MobileNetV3-small/large,
+# EfficientNet-b0, lsq4bit/8bit, k=4/k=64) reproduction, sequentially on one GPU.
+# Usage: run_all.sh [gpu_id]
 set -u
 GPU="${1:-0}"
 RESULT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "$RESULT_ROOT/../.." && pwd)"
 PY=python
 SCRIPT="$REPO_ROOT/coda/test_tta_per_corruption.py"
+
 CORRS="gaussian_noise shot_noise impulse_noise defocus_blur glass_blur motion_blur zoom_blur snow frost fog brightness contrast elastic_transform pixelate jpeg_compression"
-YAMLS="table7_mbv3small_lsq2bit_k4 table7_mbv3small_lsq2bit_k64 table7_mbv3large_lsq2bit_k4 table7_mbv3large_lsq2bit_k64 table7_effb0_lsq2bit_k4 table7_effb0_lsq2bit_k64"
+
+YAMLS="table5_resnet26_fp table5_resnet26_lsq2bit table5_resnet26_lq2bit \
+table8_mbv3small_lsq4bit_k4 table8_mbv3small_lsq8bit_k4 table8_mbv3small_lsq4bit_k64 table8_mbv3small_lsq8bit_k64 \
+table8_mbv3large_lsq4bit_k4 table8_mbv3large_lsq8bit_k4 table8_mbv3large_lsq4bit_k64 table8_mbv3large_lsq8bit_k64 \
+table8_effb0_lsq4bit_k4 table8_effb0_lsq8bit_k4 table8_effb0_lsq4bit_k64 table8_effb0_lsq8bit_k64"
 
 mkdir -p "$RESULT_ROOT/run_logs"
 cd "$REPO_ROOT" || exit 1
+
 for y in $YAMLS; do
   YAML="$RESULT_ROOT/yaml/${y}.yaml"
   for c in $CORRS; do
