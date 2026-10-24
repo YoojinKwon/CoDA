@@ -55,8 +55,6 @@ huggingface-cli download ideastraw/coda-reproduction-checkpoints \
 
 Then point `ckpt_path` in the corresponding yaml at the downloaded file.
 
-Note: CIFAR10 ResNet26 4-bit/8-bit (LSQ and LQ) checkpoints are not
-included — see TODO below.
 
 ## Usage
 
